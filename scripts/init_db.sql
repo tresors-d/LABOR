@@ -3,112 +3,112 @@ CREATE DATABASE LABORATOIRE;
 USE  LABORATOIRE;
  
 Create table TEST_RESULT(
-	ID_TEST_RESULT integer not null,
-    ID_TEST_REQUEST Varchar not null,
-    NAME_TRES Varchar not null,
-    VALUE_TR Varchar );                                               
+	ID_TEST_RESULT integer(255) AUTO not null,
+    ID_TEST_REQUEST integer(255) AUTO not null,
+    NAME_TRES Varchar(50) not null,
+    VALUE_TR Varchar(20) );                                               
 
     
 
   Create table TEST_REQUEST(
-    ID_TEST_REQUEST Varchar not null,
-    ID_PARTIENT Varchar not null,
-    ID_TEST Varchar not null,
-    ID_BILL Varchar not null,
-    NAME_TREQ Varchar not null,
-    DATE_TREQ Date,
-    STATUT_TREQ Varchar);
+    ID_TEST_REQUEST integer(255) AUTO not null,
+    ID_PARTIENT integer(255) AUTO not null,
+    ID_TEST integer(255) AUTO not null,
+    ID_BILL integer(255) AUTO not null,
+    NAME_TREQ Varchar(50) not null,
+    DATE_TREQ Date(8),
+    STATUT_TREQ Varchar(255));
 
     
   Create table PATIENT(
-   ID_PATIENT Varchar primary key,
-   NAME_P Varchar not null,       
-   FiRS_TNAME_P Varchar,                                                  
-    ADRESS_P Varchar,
-    BOTH_DATE_P Date,
-    PHONE_NIMBER Int,                                                    
-    SEX_P Varchar);
+   ID_PATIENT integer(255) AUTO primary key,
+   NAME_P Varchar(25) not null,       
+   FiRS_NAME_P Varchar(25),                                                  
+    ADRESS_P Varchar(50),
+    BOTH_DATE_P Date(8),
+    PHONE_NIMBER integer(20),                                                    
+    SEX_P Varchar(1));
 
   
 
   create table BILL(
-   ID_BILL Varchar primary key,
+   ID_BILL integer(255) AUTO primary key,
                                                               
-   CREATION_DATE Date,
-   TOTAL_AMOUNT Int,
-   TOTAL_AMOUNT_PAID Int);
+   CREATION_DATE Date(8),
+   TOTAL_AMOUNT integer(255),
+   TOTAL_AMOUNT_PAID integer(255));
 
  Create table TEST(
-  ID_TEST Varchar not null,
+  ID_TEST integer(255) AUTO not null,
                                                            
-  ID_TEST_TYPE Varchar not null,
-  NAME_T Varchar not null,
-  DESCRIPTION_T Varchar,
-  PRICE_T  integer,
-  MIN_TIME_FRAME Varchar,
-  MAX_TIME_FRAME Varchar);
+  ID_TEST_TYPE integer(255) AUTO not null,
+  NAME_T Varchar((25)) not null,
+  DESCRIPTION_T Varchar(255),
+  PRICE_T  integer(255),
+  MIN_TIME_FRAME integer(100),
+  MAX_TIME_FRAME integer(100));
  
  Create table TEST_TYPE(
 
-  ID_TEST_TYPE Varchar primary key ,
-  NAME_TP Varchar);
+  ID_TEST_TYPE integer(255) AUTO primary key ,
+  NAME_TP Varchar(50));
 
  Create table RESULT(
-  ID_RESULT Varchar  not null  ,
-  ID_TEST Varchar not null,
-  NAME_R Varchar,
-  DESCRIPTION_R Varchar);
+  ID_RESULT integer(255) AUTO  not null  ,
+  ID_TEST integer(255) AUTO not null,
+  NAME_R Varchar(25),
+  DESCRIPTION_R Varchar(255));
 
  Create table RESULT_ITEM(
-  ID_RESULT_ITEM Varchar not null ,
-  ID_RESULT Varchar not null ,
-  UNIT Varchar,
-  TYPE_RI Varchar);                                                
+  ID_RESULT_ITEM integer(255) AUTO not null ,
+  ID_RESULT integer(255) AUTO not null ,
+  UNIT Varchar(25),
+  TYPE_RI Varchar(255));                                                
                                                                               
 
  Create table BILL_ITEM(
-  ID_BILL_ITEM Varchar not null,         
-  ID_BILL Varchar not null,
-  PRICE integer,
-  QUANTITY Int,
-  DISCOUNT integer,
-  DESCRIPTION Varchar);
+  ID_BILL_ITEM integer(25) AUTO not null,         
+  ID_BILL integer(20) AUTO not null,
+  PRICE integer(255),
+  QUANTITY integer(55),
+  DISCOUNT integer(50),
+  DESCRIPTION_B Varchar(255));
 
  Create table ROLE(
-  ID_ROLE Varchar primary key,    
-  NAME_R Varchar,
-  DESCRIPTION_RO Varchar);
+  ID_ROLE integer(50) AUTO primary key,    
+  NAME_R Varchar(25),
+  DESCRIPTION_RO Varchar(255));
 
  Create table USER_ROLE(
-  ID_ROLE Varchar not null,
-  ID_USER Varchar not null);
+  ID_ROLE integer(255) AUTO not null,
+  ID_USER integer(200) AUTO not null);
 
  Create table USER(
-  ID_USER Varchar primary key,
-  NAME_T Varchar not null,
- FIRST_NAME Varchar,
-  ADRESS Varchar,
-  PHONE_NUNBER integer,
-  PASSWORD_U Varchar not null);
+  ID_USER integer(45) AUTO primary key,
+  NAME_T Varchar(20) not null,
+ FIRST_NAME Varchar(25),
+  ADRESS Varchar(20),
+  PHONE_NUNBER integer(60),
+  PASSWORD_U Varchar(50) not null);
 
  Create table PAYMENT(
-  ID_PAYMENT Varchar not null,
-  ID_USER Varchar not null,
-  ID_BILL Varchar not null,
-  DATE_PY Date,
-  AMOUNT_PY integer);
+  ID_PAYMENT integer(255) AUTO not null,
+  ID_USER integer(255) AUTO not null,
+  ID_BILL integer(255) AUTO not null,
+  DATE_PY Date(8),
+  AMOUNT_PY integer(55));
 
  Create table SAMPLE(
-  ID_SAMPLE Varchar not null,
-  ID_SAMPLE_TYPE Varchar not null,
-  ID_TEST_REQUEST Varchar not nulL,
-  NAME_S Varchar not null,
-  PRODUCTION_DATE Date,
-  EXPIRATION_DATE Date);
+  ID_SAMPLE integer(20) AUTO not null,
+  ID_SAMPLE_TYPE integer(40) AUTO not null,
+  ID_TEST_REQUEST integer(50) AUTO not nulL,
+  NAME_S Varchar(255) not null,
+  PRODUCTION_DATE Date(8),
+  EXPIRATION_DATE Date(8));
 
  Create table SAMPLE_TYPE(
-  ID_SAMPLE_TYPE Varchar primary key,
-  NAME_ST Varchar,
+  ID_SAMPLE_TYPE integer(255) AUTO primary key,
+  NAME_ST Varchar(255),
   DESCRIPTION Varchar);
 
  
