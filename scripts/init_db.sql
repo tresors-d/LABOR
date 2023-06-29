@@ -10,7 +10,7 @@ Create table TEST_RESULT(
 
     
 
-  Create table TEST_REQUEST(
+    Create table TEST_REQUEST(
     ID_TEST_REQUEST integer(255) AUTO not null,
     ID_PARTIENT integer(255) AUTO not null,
     ID_TEST integer(255) AUTO not null,
@@ -20,7 +20,7 @@ Create table TEST_RESULT(
     STATUT_TREQ Varchar(255));
 
     
-  Create table PATIENT(
+   Create table PATIENT(
    ID_PATIENT integer(255) AUTO primary key,
    NAME_P Varchar(25) not null,       
    FiRS_NAME_P Varchar(25),                                                  
@@ -38,7 +38,7 @@ Create table TEST_RESULT(
    TOTAL_AMOUNT integer(255),
    TOTAL_AMOUNT_PAID integer(255));
 
- Create table TEST(
+  Create table TEST(
   ID_TEST integer(255) AUTO not null,
                                                            
   ID_TEST_TYPE integer(255) AUTO not null,
