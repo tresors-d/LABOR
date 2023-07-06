@@ -5,8 +5,8 @@ USE  LABORATOIRE;
 CREATE TABLE test_result(
   id INT NOT NULL AUTO_INCREMENT,
   id_test_request INT NOT NULL,
-  name_tr VARCHAR(50) NOT NULL,
-  value_tr VARCHAR(20),
+  testResult_name VARCHAR(50) NOT NULL,
+  testResult_value VARCHAR(20),
   PRIMARY KEY (id)
 );                                               
 
@@ -15,9 +15,9 @@ CREATE TABLE test_request(
   id_patient INT NOT NULL,
   id_test INT NOT NULL,
   id_bill INT NOT NULL,
-  name_treq VARCHAR(50) NOT NULL,
-  date_treq DATE NULL,
-  statut_treq VARCHAR(100) NULL,
+  testRequest_name VARCHAR(50) NOT NULL,
+  testRequest_date DATE NULL,
+  testRequest_statut VARCHAR(100) NULL,
   PRIMARY KEY (id)
 );
     
@@ -42,30 +42,30 @@ CREATE TABLE BILL(
 Create table TEST(
   id INT NOT NULL AUTO_INCREMENT,
   id_test_type INT NOT NULL,
-  name_t VARCHAR(25) NOT NULL,
-  description_t VARCHAR(255) NULL,
-  price_t INT NULL,
+  test_name VARCHAR(25) NOT NULL,
+  test_description VARCHAR(255) NULL,
+  test_price INT NULL,
   min_time_frame INT NULL,
   max_time_frame INT NULL,
   PRIMARY KEY (id)
 );  
 CREATE TABLE test_type(
   id INT NOT NULL AUTO_INCREMENT, 
-  name_tt VARCHAR(50) NULL,
+  testType_name VARCHAR(50) NULL,
   PRIMARY KEY (id)
 );
  CREATE TABLE result(
   id INT NOT NULL AUTO_INCREMENT,
   id_test INT NOT NULL,
-  name_r VARCHAR(25) NULL,
-  description_r VARCHAR(255) NULL,
+  result_name VARCHAR(25) NULL,
+  result_description VARCHAR(255) NULL,
   PRIMARY KEY (id)
 );
 CREATE TABLE result_item(
   id INT NOT NULL AUTO_INCREMENT,
   id_result INT NOT NULL,
   unit VARCHAR(25) NULL,
-  type_r VARCHAR(255) NULL,
+  resultItem_type VARCHAR(255) NULL,
   PRIMARY KEY (id)                                                
 );                                                                              
 CREATE TABLE bill_item(
@@ -74,22 +74,23 @@ CREATE TABLE bill_item(
   price INT NULL,
   quantity INT NULL,
   discount INT NULL,
-  description_b VARCHAR(255) NULL,
+  billItem_description VARCHAR(255) NULL,
   PRIMARY KEY (id)
 );
 CREATE TABLE role(
   id INT NOT NULL AUTO_INCREMENT,    
-  name_r VARCHAR(25) NULL,
-  description_r VARCHAR(255) NULL,
+  role_name VARCHAR(25) NULL,
+  role_description VARCHAR(255) NULL,
   PRIMARY KEY (id) 
 );
 CREATE TABLE user(
   id INT NOT NULL AUTO_INCREMENT,
   last_name VARCHAR(20) NOT NULL,
   first_name VARCHAR(25) NULL,
+  user_name VARCHAR(50),
   adress VARCHAR(20) NULL,
   phone_number INT NULL,
-  password_u VARCHAR(50) NOT NULL,
+  user_password VARCHAR(50) NOT NULL,
   PRIMARY KEY (id)
 );
 CREATE TABLE user_role(
@@ -101,23 +102,23 @@ CREATE TABLE payments(
   id INT NOT NULL AUTO_INCREMENT,
   id_user INT NOT NULL,
   id_bill INT NOT NULL,
-  date_p DATE NULL,
-  amount_p INT NULL,
+  payments_date DATE NULL,
+  payments_amount INT NULL,
   PRIMARY KEY (id)
 );
 CREATE TABLE sample(
   id INT NOT NULL AUTO_INCREMENT,
   id_sample_type INT NOT NULL,
   id_test_request INT NOT NULL,
-  name_s VARCHAR(255) NOT NULL,
+  sample_name VARCHAR(255) NOT NULL,
   production_date DATE NULL,
   expiration_date DATE NULL,
   PRIMARY KEY (id)
 );
 CREATE TABLE sample_type(
   id INT NOT NULL AUTO_INCREMENT,
-  name_st VARCHAR(255) NULL,
-  description_st VARCHAR(255) NULL,
+  sampleType_name VARCHAR(255) NULL,
+  sampleType_description VARCHAR(255) NULL,
   PRIMARY KEY (id)
 );
 -- Foreign keys definition
