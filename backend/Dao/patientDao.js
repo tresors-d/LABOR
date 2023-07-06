@@ -1,4 +1,4 @@
-
+const appConfig = require("../config/appconfig");
 
 module.exports = {
     save: (patient, callback) => {

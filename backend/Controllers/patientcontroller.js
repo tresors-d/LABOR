@@ -1,5 +1,5 @@
 const patient = require("../Models/patientmodel");
-
+const patientDao = require("../Dao/patientDao");
 
 module.exports = {
     createPatient: (req, res) => {
@@ -15,7 +15,7 @@ module.exports = {
             if (err) {
                 console.log(err);
             } else {
-                //res.render(...) | res.json(...) | ...
+                
                 console.log(`patient created successfully with ID ${result.insertId}. Details...`);
                 console.log(result);
             }
