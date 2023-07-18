@@ -1,16 +1,16 @@
 
 
-class patient {
+class Patient {
     constructor(obj = {}) {
         this.id = obj.id;
-        this.lastName = obj.lastName;
-        this.firstName = obj.firstName;
-        this.address = obj.address;
-        this.bothDate = obj.bothDate
-        this.phoneNumber = obj.phoneNumber;
+        this.last_name = obj.last_name;
+        this.first_name = obj.first_name;
+        this.adress = obj.adress;
+        this.both_date = obj.both_date
+        this.phone_number = obj.phone_number;
         this.sex = obj.sex;
         
     }
 }
 
-module.exports = patient;
+module.exports = Patient;

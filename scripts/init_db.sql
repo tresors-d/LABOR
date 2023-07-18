@@ -15,7 +15,7 @@ CREATE TABLE test_request(
   id_patient INT NOT NULL,
   id_test INT NOT NULL,
   id_bill INT NOT NULL,
-  testRequest_name VARCHAR(50) NOT NULL,
+  testRequadressest_name VARCHAR(50) NOT NULL,
   testRequest_date DATE NULL,
   testRequest_statut VARCHAR(100) NULL,
   PRIMARY KEY (id)
