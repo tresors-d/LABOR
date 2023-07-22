@@ -1,8 +1,5 @@
-
 const patientRouter = require ("./backend/routes/patientroute");
-const router = require("./backend/routes/patientroute");
 const express = require('express');
-const connection = require("./backend/config/appconfig");
 
 //integration du template en dans nodejs
 
@@ -17,7 +14,7 @@ app.use(homeRouter.routes);
 
 
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: false}));
 
 
 
@@ -45,14 +42,13 @@ app.use(express.static('public'));
 
 
 app.set('port', process.env.PORT || 3000 , function () {
-    patientController.createpatient();
-    patientController.modifyPatient();
+    
 });
  app.use('/patient', patientRouter);
  //app.use('/patientupdate', patientRouter);
- app.get("/patientupdate", function(req, res) {
-    res.render("patientupdate");
-});
+//  app.get("/update", function(req, res) {
+//     res.render("update");
+// });
  
  
 

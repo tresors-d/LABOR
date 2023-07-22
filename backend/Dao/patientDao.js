@@ -4,7 +4,7 @@ const appConfig = require("../config/appconfig");
 
 module.exports = {
     save: (patient, callback) => {
-        const connection = appConfig.connection;
+         const connection = appConfig.connection;
         connection.connect(err => {
             if(!err) {
                 const sql = `INSERT INTO patient(last_name, first_name, adress, both_date, phone_number, sex) VALUES('${patient.last_name}', '${patient.first_name}', '${patient.adress}', '${patient.both_date}' ,'${patient.phone_number}', '${patient.sex}')`;
@@ -16,6 +16,7 @@ module.exports = {
     },
 
    put: (patient, callback) => {
+    
     const connection = appconfig.connection;
     connection.connect(err => {
         if(!err) {
@@ -27,13 +28,14 @@ module.exports = {
     })
    },
 
-   delete: (patient, callback) => {
+   delete: ( patient, callback) => {
+   
     const connection = appconfig.connection;
     connection.connect(err => {
         if(!err) {
             const  sql = `DELETE FROM patient WHERE id = ? ('${patient.id}')`;
-            connection.query(sql, (err, result) => {
-                callback(err, result);
+            connection.query(sql, [id], (err, result) => {
+                // callback(err, result);
             })
         }
     })
@@ -50,7 +52,22 @@ module.exports = {
             });
         }
     })
-   }
+   },
+//    get:(patient , callback) => {
+//     const connection = appconfig.connection;
+//     connection.connect(err => {
+//         if(!err) {
+//             const sql = `SELECT * FROM patient`;
+//             connection.query(sql, (err, data) =>{
+//                 // callback(err, data);
+//             });
+//             const sq  = `SELECT * FROM patient WHERE id = = ? ('${patient.id}')`;
+//             connection.query(sq, (err, data) =>{
+//                 // callback(err, data);
+//             });
+//         }
+//     })
+//    }
 
 
 

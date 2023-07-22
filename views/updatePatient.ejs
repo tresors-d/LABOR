@@ -161,7 +161,7 @@
 
     <!-- ////////////////////////////////////////////////////////////////////////////-->
 
-
+  
     <!-- main menu-->
     <div data-scroll-to-active="true" class="main-menu menu-fixed menu-dark menu-accordion menu-shadow">
       <!-- main menu header-->
@@ -456,7 +456,7 @@
       <!-- main menu footer-->
     </div>
     <!-- / main menu-->
-
+    
     <div class="app-content content container-fluid">
       <div class="content-wrapper">
         <div class="content-header row">
@@ -490,7 +490,7 @@
 		<div class="col-md-6">
 			<div class="card">
 				<div class="card-header">
-					<h4 class="card-title" id="basic-layout-round-controls">PATIENT</h4>
+					<h4 class="card-title" id="basic-layout-round-controls">MODIFY PATIENT</h4>
 					<a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
 					<div class="heading-elements">
 						<ul class="list-inline mb-0">
@@ -506,38 +506,51 @@
 
 						
 
-						<form class="form"  action="/patient" method="post">
+						<form class="form"  action="/update/<%= patient.id %>?_method=PUT" method="post">
 							<div class="form-body">
 
 								<div class="form-group">
 									<label for="complaintinput1">last_name</label>
-									<input type="text" id="complaintinput1" class="form-control round" placeholder="last_name" name="last_name">
+                  
+
+									<input type="text" id="complaintinput1" class="form-control round" placeholder="last_name" name="last_name" value="<%= patient.last_name %>">
+                 
 								</div>
 
 								<div class="form-group">
 									<label for="complaintinput2"> first_name</label>
-									<input type="text" id="complaintinput2" class="form-control round" placeholder="first_name" name="first_name">
+                  
+									<input type="text" id="complaintinput2" class="form-control round" placeholder="first_name" name="first_name"  value="<%= patient.fist_name %>">
+                  
 								</div>
 								<div class="form-group">
 									<label for="complaintinput2">adress</label>
-									<input type="text" id="complaintinput2" class="form-control round" placeholder="adress" name="adress">
+                  
+									<input type="text" id="complaintinput2" class="form-control round" placeholder="adress" name="adress"  value="<%= patient.adress %>">
+                  
 								</div>
 
 								<div class="form-group">
 									<label for="complaintinput3">both_date</label>
-									<input type="date" id="complaintinput3" class="form-control round" name="both_date">
+                  
+									<input type="date" id="complaintinput3" class="form-control round" name="both_date"  value="<%= patient.both_date %>">
+                  
 								</div>
 
 
 								<div class="form-group">
 									<label for="complaintinput4">phone_number</label>
-									<input type="text" id="complaintinput4" class="form-control round" placeholder="phone_number" name="phone_number">
+                  
+									<input type="text" id="complaintinput4" class="form-control round" placeholder="phone_number" name="phone_number" value="<%= patient.phone_number %>">
+                  
 								</div>
 
 
 								<div class="form-group">
 									<label for="complaintinput6">sex</label>
-									<input type="text" id="complaintinput6" class="form-control round" placeholder="sex" name="sex">
+                  
+									<input type="text" id="complaintinput6" class="form-control round" placeholder="sex" name="sex"  value="<%= patient.sex %>">
+                  
 								</div>
 							</div>
 
@@ -546,7 +559,7 @@
 									<i class="icon-cross2"></i> Cancel
 								</button>
 								<button type="submit" class="btn btn-primary">
-									<i class="icon-check2"></i> Save
+									<i class="icon-check2"></i> MODIFY
 								</button>
 							</div>
 						</form>

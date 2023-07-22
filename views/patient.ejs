@@ -38,6 +38,7 @@
   <!-- END Page Level CSS-->
   <!-- BEGIN Custom CSS-->
   <link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
+
   <!-- END Custom CSS-->
 </head>
 
@@ -645,7 +646,7 @@
 
 
             <div class="row match-height">
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="card">
                   <div class="card-header">
                     <h4 class="card-title" id="basic-layout-round-controls">PATIENT</h4>
@@ -659,6 +660,7 @@
                       </ul>
                     </div>
                   </div>
+
                   <div class="card-body collapse in">
                     <div class="card-block">
 
@@ -669,8 +671,10 @@
 
                           <div class="form-group">
                             <label for="complaintinput1">last_name</label>
+
                             <input type="text" id="complaintinput1" class="form-control round" placeholder="last_name"
-                              name="last_name">
+                              name="last_name" >
+
                           </div>
 
                           <div class="form-group">
@@ -715,11 +719,13 @@
                       </form>
                     </div>
                   </div>
+
                 </div>
               </div>
 
 
             </div>
+
 
 
             <div class="mt-3 p-4 bg-light text-dark" rounder>
@@ -734,14 +740,13 @@
 
                   <tr>
                     <th scope="col">id</th>
-                    <th scope="col">first_name</th>
-                    <th scope="col">last_name </th>
+                    <th scope="col">last_name</th>
+                    <th scope="col"> first_name</th>
                     <th scope="col">adress</th>
                     <th scope="col">both_date</th>
                     <th scope="col">phone_number</th>
                     <th scope="col">sex</th>
-                    <th scope="col">updete</th>
-                    <th scope="col">delete</th>
+                    <th scope="col">Action</th>
 
                   </tr>
                   <% patients.forEach (function (patient) { %>
@@ -751,10 +756,10 @@
                       </td>
 
                       <td scope="col">
-                        <%= patient.first_name %>
+                        <%= patient.last_name %>
                       </td>
                       <td scope="col">
-                        <%= patient.last_name %>
+                        <%= patient.first_name %>
                       </td>
                       <td scope="col">
                         <%= patient.adress %>
@@ -769,18 +774,12 @@
                         <%= patient.sex %>
                       </td>
                       <td>
-                        <div class="color-box" style="background-color:#967ADC;">
-                          <div class="fonticon-wrap">
-                            <a href="patientupdate"> <i class="icon-pencil2"></a>
+                        
+                          
+                            <a href="/patient/update/<%= patient.id %>" class="btn btn-primary"> <i class="icon-pencil2"></i></a>
 
-                            </i>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="color-box" style="background-color:#37BC9B;">
-                          <div class="fonticon-wrap"><i class="icon-bin"></i></div>
-                        </div>
+                            <a class="btn btn-danger" href="patient/delete/<%= patient.id %>"> <i class="icon-bin"></i></a> 
+                        
 
                       </td>
                     </tr>
@@ -893,5 +892,6 @@
   <!-- BEGIN PAGE LEVEL JS-->
   <!-- END PAGE LEVEL JS-->
 </body>
+
 
 </html>
