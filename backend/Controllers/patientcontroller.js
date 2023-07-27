@@ -1,40 +1,70 @@
 const Patient = require("../Models/patientmodel");
 const patientDao = require("../Dao/patientDao");
-
+const appconfig = require("../config/appconfig");
+const appConfig = require("../config/appconfig");
 
 module.exports = {
     createPatient: (req, res, next) => {
         console.log(req.body)
-        
+
         const patient = new Patient({
-            _id: req.params.id,
+            id: req.params.id,
             last_name: req.body.last_name,
             first_name: req.body.first_name,
             adress: req.body.adress,
             both_date: req.body.both_date,
             phone_number: req.body.phone_number,
-            sex: req.body.sex
-
+            sex: req.body.sex,
+            id: req.body.id,
 
 
         })
-        patientDao.save(patient, (err, result) => {
-            if (err) {
-                console.log(err);
-                res.json(err);
-            } else {
+        const action = req.body.action;
 
-                console.log(`patient created successfully with ID ${result.insertId}. Details...`);
-                console.log(result);
-               
-                res.redirect("/patient");
-                next();
+        if (action === 'Save') {
+            patientDao.save(patient, (err, result) => {
 
-            }
-        });
+                if (err) {
+                    console.log(err);
+                    res.json(err);
+
+                } else {
+
+
+                    console.log(`patient created successfully with ID ${result.insertId}. Details...`);
+                    console.log(result);
+
+                    res.redirect("/patient");
+
+
+                }
+
+
+            });
+        } else if (action === 'Update') {
+            patientDao.put(patient, (err, result) => {
+
+                if (err) {
+                    console.log(err);
+                    res.json(err);
+                } else {
+                    console.log(`patient update successfully with ID ${result.updateId}. Details...`);
+                    console.log(result);
+                    const id = req.params.id;
+
+                    res.redirect("/patient")
+
+
+
+
+
+                }
+            })
+        }
     },
+
     modifyPatient: (req, res, next) => {
-        
+        const id = req.params.id;
         patientDao.get((err, data) => {
             const patientList = [];
             if (err) {
@@ -42,37 +72,44 @@ module.exports = {
                 console.log(err);
                 req.json(err);
             } else {
-                data.forEach(it => patientList.push(it))  
+                data.forEach(it => patientList.push(it))
             }
-            const patientToUpdate = patientList.find(it => it.id === req.params.id);
-           
+            var patientToUpdate;
+            patientList.forEach(function (patient) {
+                if (patient.id == req.params.id) {
+                    patientToUpdate = patient;
+                }
+            })
             res.render('patient', {
-                
+
                 patientToUpdate: patientToUpdate,
                 patients: patientList
-                
+
             })
+
+
+
         })
     },
+
+
 
 
     deletePatient: (req, res, next) => {
-        // patient.delete({ _id: req.params.id })
-        patientDao.delete( (err, result) => {
+        const id = req.params.id;
+        patientDao.delete({ id: id }, (err, result) => {
             if (err) {
                 console.log(err);
+                res.json(err);
             } else {
-                console.log(`patient delete successfully`);
+                console.log('patient delete');
+                console.log(`Patient deleted successfully with ID ${id}. Details...`);
                 console.log(result);
-                res.json(result);
-                //res.render("delete", {patient: result.rows[0]});
-                res.render('delet', {patient});
                 res.redirect("/patient");
-                next()
             }
-        })
-    },
+        });
 
+    },
 
     getpatients: (req, res) => {
         patientDao.get((err, data) => {
@@ -82,7 +119,8 @@ module.exports = {
                 console.log(err);
                 req.json(err);
             } else {
-                data.forEach(it => patientList.push(it))  
+                data.forEach(it => patientList.push(it))
+
             }
 
             res.render('patient', {
