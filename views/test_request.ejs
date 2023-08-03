@@ -1,0 +1,204 @@
+<link href="main.87c0748b313a1dda75f5.css" rel="stylesheet">
+
+<div class="content-body"><!-- Basic form layout section start -->
+    <section id="basic-form-layouts">
+        <div class="row match-height">
+
+
+
+
+
+
+
+            <div class="row match-height">
+                <div class="col-md-11">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title" id="basic-layout-round-controls">testRequest</h4>
+                            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                            <div class="heading-elements">
+                                <ul class="list-inline mb-0">
+                                    <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                                    <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                                    <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                                    <li><a data-action="close"><i class="icon-cross2"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="card-body collapse in">
+                            <div class="card-block">
+
+
+
+                                <form autocomplete="off" class="form" action="/test_request" method="post">
+                                    <div class="form-body">
+
+                                        <input type="hidden" id="complaintinput1" class="form-control round" name="id"
+                                            value="<% if(typeof test_requestToUpdate !== 'undefined'){ %> <%= test_requestToUpdate.id %> <% } %>">
+
+
+                                        <div class="form-group">
+                                            <label for="complaintinput1">testRequest_name</label>
+                                            <input type="text" id="complaintinput1" class="form-control round"
+                                                placeholder="testRequest_name" name="testRequest_name"
+                                                value="<% if(typeof test_requestToUpdate !== 'undefined'){ %> <%= test_requestToUpdate.testRequest_name %> <% } %>">
+
+                                        </div>
+
+                                        
+                                        
+
+                                        <div class="form-group">
+                                            <label for="complaintinput3">testRequest_date</label>
+                                            <input type="date" id="complaintinput3" class="form-control round"
+                                                name="testRequest_date"
+                                                value="<% if(typeof test_requestToUpdate !== 'undefined'){ %> <%= test_requestToUpdate.testRequest_date %> <% } %>">
+                                        </div>
+
+
+                                       
+
+
+                                        <div class="form-group">
+                                            <label for="complaintinput6">testRequest_statut</label>
+                                            <input type="text" id="complaintinput6" class="form-control round"
+                                                placeholder="testRequest_statut" name="testRequest_statut"
+                                                value="<% if(typeof test_requestToUpdate !== 'undefined'){ %> <%= test_requestToUpdate.testRequest_statut %> <% } %>">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-actions">
+                                        <button type="button" class="btn btn-warning mr-1">
+                                            <i class="icon-cross2"></i> Cancel
+                                        </button>
+                                        <button type="submit" class="btn btn-primary" name="action" value="Save">
+                                            <i class="icon-check2"></i> Save
+                                        </button>
+                                        <button class="btn btn-primary" name="action" value="Update">
+                                            <i class="icon-pencil2"></i> Update
+                                        </button>
+
+                                </form>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+        
+        <div class="card mb-3">
+            <div class="card-header-tab card-header">
+                <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i
+                        class="header-icon lnr-laptop-phone mr-3 text-muted opacity-6"> </i>Easy Dynamic Tables</div>
+                <div class="btn-actions-pane-right actions-icon-btn">
+                    <div class="btn-group dropdown">
+                        <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            class="btn-icon btn-icon-only btn btn-link"><i
+                                class="pe-7s-menu btn-icon-wrapper"></i></button>
+                        <div tabindex="-1" role="menu" aria-hidden="true"
+                            class="dropdown-menu-right rm-pointers dropdown-menu-shadow dropdown-menu-hover-link dropdown-menu">
+                            <h6 tabindex="-1" class="dropdown-header">Header</h6>
+                            <button type="button" tabindex="0" class="dropdown-item"><i class="dropdown-icon lnr-inbox">
+                                </i><span>Menus</span></button>
+                            <button type="button" tabindex="0" class="dropdown-item"><i
+                                    class="dropdown-icon lnr-file-empty"> </i><span>Settings</span></button>
+                            <button type="button" tabindex="0" class="dropdown-item"><i class="dropdown-icon lnr-book">
+                                </i><span>Actions</span></button>
+                            <div tabindex="-1" class="dropdown-divider"></div>
+                            <div class="p-3 text-right">
+                                <button class="mr-2 btn-shadow btn-sm btn btn-link">View Details</button>
+                                <button class="mr-2 btn-shadow btn-sm btn btn-primary">Action</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <% if (test_requests && test_requests.length) { %>
+                <table style="width: 100%;" id="example" class="table table-hover table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>testRequest_name</th>
+                            <th>testRequest_date</th>
+                            <th>testRequest_statut</th>
+                            <th>Action</th>
+                           
+                        </tr>
+                        <tr>
+                            <td >
+                              <%= test_request.id %>
+                            </td>
+      
+                            <td >
+                              <%= testRequest_name %>
+                            </td>
+                            <td >
+                              <%= testRequest_date %>
+                            </td>
+                            <td >
+                              <%= testRequest_statut %>
+                            </td>
+                           
+                            <td>
+      
+      
+                              <a href="/test_request/update/<%= test_request.id %>" class="btn btn-primary"> <i
+                                  class="icon-pencil2"></i></a>
+      
+                              <a class="btn btn-danger" href="test_request/delete/<%= test_request.id %>"> <i class="icon-bin"></i></a>
+                              
+      
+      
+                            </td>
+                          </tr>
+                    </thead>
+                    <tbody>
+                      
+                       
+                       
+                        
+                     
+ 
+
+   
+ 
+    
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>testRequest_name</th>
+                            <th>testRequest_date</th>
+                            <th>testRequest_statut</th>
+                            <th>Action</th>  
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <% } else { %>
+            <p>Aucune demande de test trouve trouvé</p>
+            <% } %>
+</div>
+</section>
+
+
+
+
+
+
+
+<script type="text/javascript" src="assets/scripts/main.87c0748b313a1dda75f5.js"></script>

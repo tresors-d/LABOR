@@ -5,7 +5,8 @@ const appConfig = require("../config/appconfig");
 
 module.exports = {
     createPatient: (req, res, next) => {
-        console.log(req.body)
+        console.log(req.body.both_date)
+        
 
         const patient = new Patient({
             id: req.params.id,
@@ -50,9 +51,9 @@ module.exports = {
                 } else {
                     console.log(`patient update successfully with ID ${result.updateId}. Details...`);
                     console.log(result);
-                    const id = req.params.id;
-
                     res.redirect("/patient")
+
+
 
 
 
@@ -119,10 +120,11 @@ module.exports = {
                 console.log(err);
                 req.json(err);
             } else {
+                
                 data.forEach(it => patientList.push(it))
 
             }
-
+            console.log(patientList)
             res.render('patient', {
                 patients: patientList
             })
